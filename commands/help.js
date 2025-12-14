@@ -4,225 +4,116 @@ const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
     const helpMessage = `
-╔═══════════════════╗
-   *🤖 ${settings.botName || 'KnightBot-MD'}*  
-   Version: *${settings.version || '3.0.0'}*
-   by ${settings.botOwner || 'Mr Unique Hacker'}
-   YT : ${global.ytch}
-╚═══════════════════╝
+╭────「 *${settings.botName || 'KnightBot-MD'}* 」────╮
+│ ✦ Version: ${settings.version || '3.0.0'}
+│ ✦ Creator: Noah ezzy
+╰────────────────────────╯
 
-*Available Commands:*
+╔══《 *COMMAND INDEX* 》══╗
 
-╔═══════════════════╗
-🌐 *General Commands*:
-║ ➤ .help or .menu
-║ ➤ .ping
-║ ➤ .alive
-║ ➤ .tts <text>
-║ ➤ .owner
-║ ➤ .joke
-║ ➤ .quote
-║ ➤ .fact
-║ ➤ .weather <city>
-║ ➤ .news
-║ ➤ .attp <text>
-║ ➤ .lyrics <song_title>
-║ ➤ .8ball <question>
-║ ➤ .groupinfo
-║ ➤ .staff or .admins 
-║ ➤ .vv
-║ ➤ .trt <text> <lang>
-║ ➤ .ss <link>
-║ ➤ .jid
-║ ➤ .url
-╚═══════════════════╝ 
+╭─❖ *ESSENTIALS* ❖─╮
+│ ⌬ .help | .menu
+│ ⌬ .ping | .alive
+│ ⌬ .owner | .jid
+│ ⌬ .tts | .url
+╰─────────────────╯
 
-╔═══════════════════╗
-👮‍♂️ *Admin Commands*:
-║ ➤ .ban @user
-║ ➤ .promote @user
-║ ➤ .demote @user
-║ ➤ .mute <minutes>
-║ ➤ .unmute
-║ ➤ .delete or .del
-║ ➤ .kick @user
-║ ➤ .warnings @user
-║ ➤ .warn @user
-║ ➤ .antilink
-║ ➤ .antibadword
-║ ➤ .clear
-║ ➤ .tag <message>
-║ ➤ .tagall
-║ ➤ .tagnotadmin
-║ ➤ .hidetag <message>
-║ ➤ .chatbot
-║ ➤ .resetlink
-║ ➤ .antitag <on/off>
-║ ➤ .welcome <on/off>
-║ ➤ .goodbye <on/off>
-║ ➤ .setgdesc <description>
-║ ➤ .setgname <new name>
-║ ➤ .setgpp (reply to image)
-╚═══════════════════╝
+╭─❖ *MEDIA & FUN* ❖─╮
+│ ⌬ .joke | .quote 
+│ ⌬ .fact | .news
+│ ⌬ .meme | .8ball
+│ ⌬ .flirt | .shayari
+│ ⌬ .wasted | .ship 
+│ ⌬ .compliment | .insult
+╰─────────────────╯
 
-╔═══════════════════╗
-🔒 *Owner Commands*:
-║ ➤ .mode <public/private>
-║ ➤ .clearsession
-║ ➤ .antidelete
-║ ➤ .cleartmp
-║ ➤ .update
-║ ➤ .settings
-║ ➤ .setpp <reply to image>
-║ ➤ .autoreact <on/off>
-║ ➤ .autostatus <on/off>
-║ ➤ .autostatus react <on/off>
-║ ➤ .autotyping <on/off>
-║ ➤ .autoread <on/off>
-║ ➤ .anticall <on/off>
-║ ➤ .pmblocker <on/off/status>
-║ ➤ .pmblocker setmsg <text>
-║ ➤ .setmention <reply to msg>
-║ ➤ .mention <on/off>
-╚═══════════════════╝
+╭─❖ *GROUP ADMIN* ❖─╮
+│ ⌬ .ban | .unban
+│ ⌬ .promote | .demote
+│ ⌬ .mute | .unmute
+│ ⌬ .kick | .warn
+│ ⌬ .tagall | .hidetag
+│ ⌬ .antilink | .antitag
+│ ⌬ .welcome | .goodbye
+╰─────────────────╯
 
-╔═══════════════════╗
-🎨 *Image/Sticker Commands*:
-║ ➤ .blur <image>
-║ ➤ .simage <reply to sticker>
-║ ➤ .sticker <reply to image>
-║ ➤ .removebg
-║ ➤ .remini
-║ ➤ .crop <reply to image>
-║ ➤ .tgsticker <Link>
-║ ➤ .meme
-║ ➤ .take <packname> 
-║ ➤ .emojimix <emj1>+<emj2>
-║ ➤ .igs <insta link>
-║ ➤ .igsc <insta link>
-╚═══════════════════╝  
+╭─❖ *STICKERS & IMAGES* ❖─╮
+│ ⌬ .sticker | .crop
+│ ⌬ .take | .blur
+│ ⌬ .removebg | .remini
+│ ⌬ .simage | .emojimix
+│ ⌬ .attp | .tgsticker
+╰─────────────────╯
 
-╔═══════════════════╗
-🖼️ *Pies Commands*:
-║ ➤ .pies <country>
-║ ➤ .china 
-║ ➤ .indonesia 
-║ ➤ .japan 
-║ ➤ .korea 
-║ ➤ .hijab
-╚═══════════════════╝
+╭─❖ *DOWNLOADS* ❖─╮
+│ ⌬ .play | .song
+│ ⌬ .instagram | .facebook
+│ ⌬ .tiktok | .spotify
+│ ⌬ .video | .ytmp4
+╰─────────────────╯
 
-╔═══════════════════╗
-🎮 *Game Commands*:
-║ ➤ .tictactoe @user
-║ ➤ .hangman
-║ ➤ .guess <letter>
-║ ➤ .trivia
-║ ➤ .answer <answer>
-║ ➤ .truth
-║ ➤ .dare
-╚═══════════════════╝
+╭─❖ *AI TOOLS* ❖─╮
+│ ⌬ .gpt | .gemini
+│ ⌬ .imagine | .flux
+│ ⌬ .sora 
+╰─────────────────╯
 
-╔═══════════════════╗
-🤖 *AI Commands*:
-║ ➤ .gpt <question>
-║ ➤ .gemini <question>
-║ ➤ .imagine <prompt>
-║ ➤ .flux <prompt>
-║ ➤ .sora <prompt>
-╚═══════════════════╝
+╭─❖ *GAMES* ❖─╮
+│ ⌬ .tictactoe | .hangman
+│ ⌬ .trivia | .truth
+│ ⌬ .dare
+╰─────────────────╯
 
-╔═══════════════════╗
-🎯 *Fun Commands*:
-║ ➤ .compliment @user
-║ ➤ .insult @user
-║ ➤ .flirt 
-║ ➤ .shayari
-║ ➤ .goodnight
-║ ➤ .roseday
-║ ➤ .character @user
-║ ➤ .wasted @user
-║ ➤ .ship @user
-║ ➤ .simp @user
-║ ➤ .stupid @user [text]
-╚═══════════════════╝
+╭─❖ *TEXT EFFECTS* ❖─╮
+│ ⌬ .metallic | .ice
+│ ⌬ .snow | .neon
+│ ⌬ .matrix | .thunder
+│ ⌬ .fire | .glitch
+│ ⌬ .blackpink | .purple
+╰─────────────────╯
 
-╔═══════════════════╗
-🔤 *Textmaker*:
-║ ➤ .metallic <text>
-║ ➤ .ice <text>
-║ ➤ .snow <text>
-║ ➤ .impressive <text>
-║ ➤ .matrix <text>
-║ ➤ .light <text>
-║ ➤ .neon <text>
-║ ➤ .devil <text>
-║ ➤ .purple <text>
-║ ➤ .thunder <text>
-║ ➤ .leaves <text>
-║ ➤ .1917 <text>
-║ ➤ .arena <text>
-║ ➤ .hacker <text>
-║ ➤ .sand <text>
-║ ➤ .blackpink <text>
-║ ➤ .glitch <text>
-║ ➤ .fire <text>
-╚═══════════════════╝
+╭─❖ *ANIME* ❖─╮
+│ ⌬ .nom | .kiss
+│ ⌬ .pat | .hug
+│ ⌬ .cry | .wink
+│ ⌬ .poke | .facepalm
+╰─────────────────╯
 
-╔═══════════════════╗
-📥 *Downloader*:
-║ ➤ .play <song_name>
-║ ➤ .song <song_name>
-║ ➤ .spotify <query>
-║ ➤ .instagram <link>
-║ ➤ .facebook <link>
-║ ➤ .tiktok <link>
-║ ➤ .video <song name>
-║ ➤ .ytmp4 <Link>
-╚═══════════════════╝
+╭─❖ *MISC EFFECTS* ❖─╮
+│ ⌬ .heart | .lgbt
+│ ⌬ .horny | .circle
+│ ⌬ .lolice | .jail
+│ ⌬ .glass | .triggered
+│ ⌬ .comrade | .passed
+╰─────────────────╯
 
-╔═══════════════════╗
-🧩 *MISC*:
-║ ➤ .heart
-║ ➤ .horny
-║ ➤ .circle
-║ ➤ .lgbt
-║ ➤ .lolice
-║ ➤ .its-so-stupid
-║ ➤ .namecard 
-║ ➤ .oogway
-║ ➤ .tweet
-║ ➤ .ytcomment 
-║ ➤ .comrade 
-║ ➤ .gay 
-║ ➤ .glass 
-║ ➤ .jail 
-║ ➤ .passed 
-║ ➤ .triggered
-╚═══════════════════╝
+╭─❖ *OWNER TOOLS* ❖─╮
+│ ⌬ .mode | .settings
+│ ⌬ .update | .setpp
+│ ⌬ .clearsession | .cleartmp
+│ ⌬ .autoreact | .autotyping
+│ ⌬ .autostatus | .autoread
+│ ⌬ .anticall | .pmblocker
+╰─────────────────╯
 
-╔═══════════════════╗
-🖼️ *ANIME*:
-║ ➤ .nom 
-║ ➤ .poke 
-║ ➤ .cry 
-║ ➤ .kiss 
-║ ➤ .pat 
-║ ➤ .hug 
-║ ➤ .wink 
-║ ➤ .facepalm 
-╚═══════════════════╝
+╭─❖ *PIES GALLERY* ❖─╮
+│ ⌬ .pies | .china
+│ ⌬ .japan | .korea
+│ ⌬ .indonesia | .hijab
+╰─────────────────╯
 
-╔═══════════════════╗
-💻 *Github Commands:*
-║ ➤ .git
-║ ➤ .github
-║ ➤ .sc
-║ ➤ .script
-║ ➤ .repo
-╚═══════════════════╝
+╭─❖ *GITHUB* ❖─╮
+│ ⌬ .git | .github
+│ ⌬ .sc | .repo
+╰─────────────────╯
 
-Join our channel for updates:`;
+╔══《 *USAGE INFO* 》══╗
+✦ Type .help <command> for detailed usage
+✦ Reply to media with commands for effects
+✦ Admin commands require bot to be admin
+
+*Tip: Use .ping to check bot status*
+`;
 
     try {
         const imagePath = path.join(__dirname, '../assets/bot_image.jpg');
@@ -238,7 +129,7 @@ Join our channel for updates:`;
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363161513685998@newsletter',
-                        newsletterName: 'KnightBot MD',
+                        newsletterName: 'Noah MD',
                         serverMessageId: -1
                     }
                 }
@@ -252,7 +143,7 @@ Join our channel for updates:`;
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363161513685998@newsletter',
-                        newsletterName: 'KnightBot MD by Mr Unique Hacker',
+                        newsletterName: 'Noah MD by ezzy',
                         serverMessageId: -1
                     } 
                 }
